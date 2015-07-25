@@ -12,6 +12,7 @@ app.controller("MovieController", function($scope, $http, MovieService){
 
         $scope.ViewModel = {
             MovieList: null,
+            QueryTerm: null,
             SelectedMovie: null,
             Page: {
                 CurrentPageNo: 1,
@@ -34,26 +35,50 @@ app.controller("MovieController", function($scope, $http, MovieService){
             LoadMovieList: function(page_number){
 
                 $scope.ViewModel.IsLoading = true;
-                //$.blockUI();
 
-                MovieService.GetMovieList(page_number, $scope.ViewModel.LimitPerPage)
+                MovieService.GetMovieList(page_number, $scope.ViewModel.LimitPerPage, $scope.ViewModel.QueryTerm)
                             .then(function(data){
                                 $scope.RawData = data;
                                 SetProperties(data);
                                 $scope.ViewModel.IsLoading = false;
-
-                                //$.unblockUI();
                 });
+
             },
+
+            SeachMovie: function() {
+                console.log("Searching movie for keyword: " + $scope.ViewModel.QueryTerm);
+                $scope.ViewModel.IsLoading = true;
+                MovieService.GetMovieList(1, $scope.ViewModel.LimitPerPage, $scope.ViewModel.QueryTerm)
+                    .then(function(data){
+                        $scope.RawData = data;
+                        SetProperties(data);
+                        $scope.ViewModel.IsLoading = false;
+                    });
+            },
+
             LoadMovie: function(movie_id){
                 $scope.ShowLoadingAnimation = true;
                 MovieService.GetMovieDetails(movie_id).then(function(data){
                     $scope.CurrentMovieDetails = data;
                     $scope.ShowLoadingAnimation = false;
             })},
+
             GetImageTooltip: function(imageUrl) {
-                return overlib("<img class='thumbnail' width=150em src='" + imageUrl + "' border=2>");
+                return overlib("<img class='img-thumbnail' width=150em src='" + imageUrl + "'>");
+            },
+
+            NavigateTo: function(url) {
+                console.log("Open an URL at: " + url);
+                window.location = url;
+            },
+
+            OpenMagnetUri: function(hash, movieName) {
+                var url = "magnet:?xt=urn:btih:[TORRENT_HASH]&dn=[Url+Encoded+Movie+Name]&tr=http://tracker.yify-torrents.com/announce&tr=udp://open.demonii.com:1337";
+                url = encodeURI(url.replace('[TORRENT_HASH]', hash).replace('[Url+Encoded+Movie+Name]', movieName));
+                console.log("Open a Magnet URI at: " + url);
+                window.location = url;
             }
+
         };
 
 

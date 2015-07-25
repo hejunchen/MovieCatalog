@@ -11,3 +11,19 @@
     opacity: 0.85;
     z-index:99999;
 }
+
+.IMDB_icon {
+    width: 40px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../images/IMDB_icon.png) no-repeat center center;
+}
+
+.table tbody>tr>td {
+    vertical-align: middle;
+}
+
+.table thead>tr>td {
+    font-size: large;
+}

@@ -4,7 +4,7 @@
 app.service("MovieService", ['$http', '$q', function($http, $q){
 
     //define the function to read the movie list json
-    var getMovieList = function(page_number, limit){
+    var getMovieList = function(page_number, limit, query_term){
 
         var deferred = $q.defer();
         var movieList = [];
@@ -14,15 +14,21 @@ app.service("MovieService", ['$http', '$q', function($http, $q){
         {
             page_number = 1;
         }
+        url += "page=" + page_number;
 
         if (limit == undefined || limit == null)
         {
             limit = 20;
         }
+        url += "&limit=" + limit;
 
-        url += "page=" + page_number + "&";
-        url += "limit=" + limit + "&";
-        url += "sort_by=date_added";
+        if (query_term == undefined || query_term == null || query_term == '') {
+            query_term = '';
+        } else {
+            url += "&query_term=" + query_term;
+        }
+
+        url += "&sort_by=date_added";
 
         console.log("Movie List JSON: " + url);
 
@@ -42,7 +48,6 @@ app.service("MovieService", ['$http', '$q', function($http, $q){
         return deferred.promise;
 
     };
-
 
     var getMovieDetails = function(movie_id){
 

@@ -18,7 +18,7 @@
 
       <!-- Bootstrap -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
-      <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="css/star-rating.min.css">
       <link rel="stylesheet" href="css/app.css">
 
@@ -51,19 +51,26 @@
 
     <div class="loading-animation-ajax" ng-if="ViewModel.IsLoading"></div>
 
-    <div id="divHeader">
-
+    <div id="divHeader" class="panel-heading">
+        <h1 style="vertical-align: middle">
+            <div class="col-lg-6">
+                Movie Count: {{ ViewModel.TotalMovieCount }}
+            </div>
+            <div class="col-lg-6">
+                <ng-include src="'views/partials/QuickSearchBar.html'"></ng-include>
+            </div>
+        </h1>
+        <br /><br />
     </div>
-
 
     <!--<div id="divContent" ng-view></div>-->
 
-    <div id="divMovieList" ng-cloak>
+    <div id="divMovieList" class="panel-body">
         <ng-include src="'views/movieList.html'" class="col-lg-12 col-md-12 col-xs-12"></ng-include>
     </div>
 
-    <div id="divFooter" ng-cloak>
-
+    <div id="divFooter" class="panel-footer text-center">
+        All resources are from: https://yts.io
     </div>
 
 
