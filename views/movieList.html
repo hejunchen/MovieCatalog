@@ -1,0 +1,45 @@
+
+<h1>Movie Count: {{ ViewModel.TotalMovieCount }}</h1>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+        <tr>
+            <td colspan="6">
+                <br />
+                <ng-include src="'views/partials/movieList_Pagination.html'"></ng-include>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td class="col-lg-1 col-md-1 col-xs-1">Date Added</td>
+            <td class="col-lg-3 col-md-3 col-xs-3">Title</td>
+            <td class="col-lg-1 col-md-1 col-xs-1">Year</td>
+            <td class="col-lg-1 col-md-1 col-xs-1">Rating</td>
+            <td class="col-lg-1 col-md-1 col-xs-1">IMDB</td>
+            <td class="col-lg-2 col-md-2 col-xs-2">Torrent Download</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="m in ViewModel.MovieList">
+            <td>{{ m.date_uploaded }}</td>
+            <td><a href="{{ m.url }}" ng-mouseover="Action.GetImageTooltip(m.medium_cover_image)" onmouseout="return nd();">{{ m.title }}</a></td>
+            <td>{{ m.year }}</td>
+            <td>{{ m.rating }}</td>
+            <!--<td><input value="{{ m.rating }}" type="number" class="rating" min=0 max=10 step=0.1 data-size="sm"></td>-->
+            <td><a href="http://www.imdb.com/title/{{ m.imdb_code }}" target="_blank" title="http://www.imdb.com/title/{{ m.imdb_code }}">{{ m.imdb_code }}</a></td>
+            <td><span ng-repeat="t in m.torrents">&nbsp;<a href="{{ t.url }}" title="{{ t.size }}">{{ t.quality }}</a>&nbsp;</span></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="6">
+                <br />
+                <ng-include src="'views/partials/movieList_Pagination.html'"></ng-include>
+                <br />
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+

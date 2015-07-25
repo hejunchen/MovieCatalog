@@ -1,0 +1,11 @@
+<div align="right">
+    <nav>
+        <ul class="pager">
+            <li class="{{ ViewModel.Page.IsFirst ? 'disabled' : '' }}"><a href="#" ng-click="ViewModel.Page.Pagination.GoToFirst()">First</a></li>
+            <li class="{{ ViewModel.Page.IsFirst ? 'disabled' : '' }}"><a href="#" ng-click="ViewModel.Page.Pagination.GoToPrevious()">Prev</a></li>
+            <li><span>page: {{ ViewModel.Page.CurrentPageNo }} / {{ ViewModel.TotalNumOfPages }}</span></li>
+            <li class="{{ ViewModel.Page.IsLast ? 'disabled' : '' }}"><a href="#" ng-click="ViewModel.Page.Pagination.GoToNext()">Next</a></li>
+            <li class="{{ ViewModel.Page.IsLast ? 'disabled' : '' }}"><a href="#" ng-click="ViewModel.Page.Pagination.GoToLast()">Last</a></li>
+        </ul>
+    </nav>
+</div>
