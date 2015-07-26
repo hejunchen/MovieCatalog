@@ -26,7 +26,7 @@ app.controller("MovieController", function($scope, $http, MovieService){
                 }
             },
             IsLoading: false,
-            LimitPerPage: 27,
+            LimitPerPage: null,
             TotalNumOfPages: null,
             TotalMovieCount: null
         };

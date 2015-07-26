@@ -1,4 +1,3 @@
-
 .loading-animation-ajax {
     position:fixed;
     top:0;
@@ -17,7 +16,7 @@
     height: 20px;
     display: inline-block;
     vertical-align: middle;
-    background: url(../images/IMDB_icon.png) no-repeat center center;
+    background: url(../images/IMDb_icon.png) no-repeat center center;
 }
 
 .table tbody>tr>td {
@@ -30,5 +29,5 @@
 
 .movieBlock {
     padding: 4px 4px 4px 4px;
-    width: 160px;
+    width: 150px;
 }
