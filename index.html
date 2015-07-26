@@ -30,17 +30,11 @@
       <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
       <!--AngularJS-->
       <script src="lib/angular-1.4.3/angular.min.js"></script>
-      <!--<script src="lib/angular-1.4.3/angular-route.min.js"></script>-->
+      <script src="lib/angular-1.4.3/angular-route.min.js"></script>
       <!--AngularJS application code-->
       <script src="js/angular/app.js"></script>
       <script src="js/angular/services.js"></script>
       <script src="js/angular/controllers.js"></script>
-
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/star-rating.min.js"></script>
-      <script src="js/overlibmws.js"></script>
-
 
       <!--************************** JavaScript - End   **********************************************-->
 
@@ -53,29 +47,38 @@
 
     <div id="divHeader" class="panel-heading">
         <h1 style="vertical-align: middle">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 Movie Count: {{ ViewModel.TotalMovieCount }}
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4">
+                <a href="#/MovieGallery"><i class="glyphicon glyphicon-th-large"></i></a>&nbsp;
+                <a href="#/MovieList"><i class="glyphicon glyphicon-th-list"></i></a>
+            </div>
+            <div class="col-lg-4">
                 <ng-include src="'views/partials/QuickSearchBar.html'"></ng-include>
             </div>
         </h1>
         <br /><br />
     </div>
 
-    <!--<div id="divContent" ng-view></div>-->
+    <div id="divContent" class="panel-body col-lg-12" ng-view></div>
 
-    <div id="divMovieList" class="panel-body">
-        <ng-include src="'views/movieList.html'" class="col-lg-12 col-md-12 col-xs-12"></ng-include>
-    </div>
+    <!--<div id="divMovieList" class="panel-body">-->
+        <!--<ng-include src="'views/movieList.html'"></ng-include>-->
+    <!--</div>-->
+
 
     <div id="divFooter" class="panel-footer text-center">
-        All resources are from: https://yts.io
+        All resources are retrieved from: https://yts.io
     </div>
 
 
 
 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/star-rating.min.js"></script>
+    <script src="js/overlibmws.js"></script>
 
 
   </body>

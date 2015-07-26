@@ -19,19 +19,20 @@ app.controller("MovieController", function($scope, $http, MovieService){
                 IsFirst: true,
                 IsLast: false,
                 Pagination: {
-                    GoToFirst:      function () { if($scope.ViewModel.Page.CurrentPageNo == 1) return false; else $scope.Action.LoadMovieList(1); },
-                    GoToPrevious:   function () { if($scope.ViewModel.Page.CurrentPageNo == 1) return false; else $scope.Action.LoadMovieList($scope.ViewModel.Page.CurrentPageNo - 1); },
-                    GoToNext:       function () { if($scope.ViewModel.Page.CurrentPageNo == $scope.ViewModel.TotalNumOfPages) return false; else $scope.Action.LoadMovieList($scope.ViewModel.Page.CurrentPageNo + 1); },
-                    GoToLast:       function () { if($scope.ViewModel.Page.CurrentPageNo == $scope.ViewModel.TotalNumOfPages) return false; else $scope.Action.LoadMovieList($scope.ViewModel.TotalNumOfPages); }
+                    GoToFirst:      function () { if($scope.ViewModel.Page.CurrentPageNo != 1) $scope.Action.LoadMovieList(1); },
+                    GoToPrevious:   function () { if($scope.ViewModel.Page.CurrentPageNo != 1) $scope.Action.LoadMovieList($scope.ViewModel.Page.CurrentPageNo - 1); },
+                    GoToNext:       function () { if($scope.ViewModel.Page.CurrentPageNo != $scope.ViewModel.TotalNumOfPages) $scope.Action.LoadMovieList($scope.ViewModel.Page.CurrentPageNo + 1) },
+                    GoToLast:       function () { if($scope.ViewModel.Page.CurrentPageNo != $scope.ViewModel.TotalNumOfPages) $scope.Action.LoadMovieList($scope.ViewModel.TotalNumOfPages); }
                 }
             },
             IsLoading: false,
-            LimitPerPage: null,
+            LimitPerPage: 27,
             TotalNumOfPages: null,
             TotalMovieCount: null
         };
 
         $scope.Action = {
+
             LoadMovieList: function(page_number){
 
                 $scope.ViewModel.IsLoading = true;
@@ -49,11 +50,11 @@ app.controller("MovieController", function($scope, $http, MovieService){
                 console.log("Searching movie for keyword: " + $scope.ViewModel.QueryTerm);
                 $scope.ViewModel.IsLoading = true;
                 MovieService.GetMovieList(1, $scope.ViewModel.LimitPerPage, $scope.ViewModel.QueryTerm)
-                    .then(function(data){
-                        $scope.RawData = data;
-                        SetProperties(data);
-                        $scope.ViewModel.IsLoading = false;
-                    });
+                            .then(function(data){
+                                $scope.RawData = data;
+                                SetProperties(data);
+                                $scope.ViewModel.IsLoading = false;
+                            });
             },
 
             LoadMovie: function(movie_id){

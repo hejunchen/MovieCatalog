@@ -27,3 +27,8 @@
 .table thead>tr>td {
     font-size: large;
 }
+
+.movieBlock {
+    padding: 4px 4px 4px 4px;
+    width: 160px;
+}
