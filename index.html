@@ -41,37 +41,31 @@
 
   </head>
 
-  <body ng-app="App" ng-controller="MovieController" ng-init="Initialization();Action.LoadMovieList(1);" ng-cloak>
-
-    <div class="loading-animation-ajax" ng-if="ViewModel.IsLoading"></div>
-
-    <div id="divHeader" class="panel-heading">
-        <h1 style="vertical-align: middle">
-            <div class="col-lg-4">
-                Movie Count: {{ ViewModel.TotalMovieCount }}
-            </div>
-            <div class="col-lg-4">
-                <a href="#/MovieGallery"><i class="glyphicon glyphicon-th-large"></i></a>&nbsp;
-                <a href="#/MovieList"><i class="glyphicon glyphicon-th-list"></i></a>
-            </div>
-            <div class="col-lg-4">
-                <ng-include src="'views/partials/QuickSearchBar.html'"></ng-include>
-            </div>
-        </h1>
-        <br /><br />
-    </div>
-
-    <div id="divContent" class="panel-body col-lg-12" ng-view></div>
-
-    <!--<div id="divMovieList" class="panel-body">-->
-        <!--<ng-include src="'views/movieList.html'"></ng-include>-->
-    <!--</div>-->
+  <body ng-app="App" ng-cloak ng-controller="MovieController" ng-init="Initialization();Action.LoadMovieList(1);" style="vertical-align: middle">
 
 
-    <div id="divFooter" class="panel-footer text-center">
-        All resources are retrieved from: https://yts.io
-    </div>
+      <div class="container">
 
+
+          <div id="divHeader" class="row">
+            <ng-include src="'views/partials/PageHeader.html'"></ng-include>
+          </div>
+
+          <hr />
+          <div id="divContent" class="row pageContent" ng-view>
+              <!--this section will use the views to fill in content-->
+          </div>
+
+          <hr />
+          <div id="divFooter" class="row">
+            <ng-include src="'views/partials/PageFooter.html'"></ng-include>
+          </div>
+
+          <!--this is the loading animation panel, it should be visible most of time-->
+          <div class="loading-animation-ajax" ng-if="ViewModel.IsLoading"></div>
+
+
+      </div>
 
 
 

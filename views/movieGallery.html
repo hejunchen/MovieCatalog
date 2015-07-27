@@ -1,18 +1,14 @@
-<div class="row">
-    <div class="col-lg-1"></div>
-    <div id="divMovieGallery" class="col-lg-10 col-md-12 col-sm-12">
+<div id="divMovieGallery" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <br />
     <span class="movieBlock" ng-repeat="m in ViewModel.MovieList" style="display: inline-block">
         <a ng-href="{{ m.url }}" title="{{ m.title_long }}">
             <img id="{{ 'img' + m.movie_id }}" ng-src="{{ m.medium_cover_image }}" class="img-thumbnail img-responsive">
         </a>
-        <br />
-        <div class="text-center"><span ng-repeat="t in m.torrents">{{ t.quality }}&nbsp;</span></div>
-        <br />
+        <div class="row text-center"><span ng-repeat="t in m.torrents">{{ t.quality }}&nbsp;</span></div>
     </span>
-    </div>
-    <div class="col-lg-1"></div>
+    <br />
 </div>
-<div class="row">
+<div class="center-block">
     <br />
     <ng-include src="'views/partials/Pagination.html'"></ng-include>
     <br />
