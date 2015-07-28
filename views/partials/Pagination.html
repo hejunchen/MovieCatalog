@@ -1,11 +1,21 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
     <nav>
         <ul class="pagination">
-            <li class="{{ ViewModel.Page.IsFirst ? 'disabled' : '' }}"><a href="#" ng-click="ViewModel.Page.Pagination.GoToFirst()" onclick="return false;">First</a></li>
-            <li class="{{ ViewModel.Page.IsFirst ? 'disabled' : '' }}"><a href="#" ng-click="ViewModel.Page.Pagination.GoToPrevious()" onclick="return false;">Prev</a></li>
-            <li><span>page: {{ ViewModel.Page.CurrentPageNo }} / {{ ViewModel.TotalNumOfPages }}</span></li>
-            <li class="{{ ViewModel.Page.IsLast ? 'disabled' : '' }}"><a href="#" ng-click="ViewModel.Page.Pagination.GoToNext()" onclick="return false;">Next</a></li>
-            <li class="{{ ViewModel.Page.IsLast ? 'disabled' : '' }}"><a href="#" ng-click="ViewModel.Page.Pagination.GoToLast()" onclick="return false;">Last</a></li>
+            <li class="{{ ViewModel.Page.IsFirst ? 'disabled' : '' }}">
+                <a href="#" ng-click="ViewModel.Page.Pagination.GoToFirst()" onclick="return false;">First</a>
+            </li>
+            <li class="{{ ViewModel.Page.IsFirst ? 'disabled' : '' }}">
+                <a href="#" ng-click="ViewModel.Page.Pagination.GoToPrevious()" onclick="return false;">Prev</a>
+            </li>
+            <li>
+                <span>page: {{ ViewModel.Page.CurrentPageNo }} / {{ ViewModel.TotalNumOfPages }}</span>
+            </li>
+            <li class="{{ ViewModel.Page.IsLast ? 'disabled' : '' }}">
+                <a href="#" ng-click="ViewModel.Page.Pagination.GoToNext()" onclick="return false;">Next</a>
+            </li>
+            <li class="{{ ViewModel.Page.IsLast ? 'disabled' : '' }}">
+                <a href="#" ng-click="ViewModel.Page.Pagination.GoToLast()" onclick="return false;">Last</a>
+            </li>
         </ul>
     </nav>
 </div>

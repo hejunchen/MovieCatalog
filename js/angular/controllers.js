@@ -37,7 +37,7 @@ app.controller("MovieController", function($scope, $http, MovieService){
 
                 $scope.ViewModel.IsLoading = true;
 
-                MovieService.GetMovieList(page_number, $scope.ViewModel.LimitPerPage, $scope.ViewModel.QueryTerm)
+                MovieService.GetMovieList(page_number, parseInt($scope.ViewModel.LimitPerPage), $scope.ViewModel.QueryTerm)
                             .then(function(data){
                                 $scope.RawData = data;
                                 SetProperties(data);
@@ -49,7 +49,7 @@ app.controller("MovieController", function($scope, $http, MovieService){
             SeachMovie: function() {
                 console.log("Searching movie for keyword: " + $scope.ViewModel.QueryTerm);
                 $scope.ViewModel.IsLoading = true;
-                MovieService.GetMovieList(1, $scope.ViewModel.LimitPerPage, $scope.ViewModel.QueryTerm)
+                MovieService.GetMovieList(1, parseInt($scope.ViewModel.LimitPerPage), $scope.ViewModel.QueryTerm)
                             .then(function(data){
                                 $scope.RawData = data;
                                 SetProperties(data);

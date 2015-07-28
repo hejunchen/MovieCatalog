@@ -12,16 +12,24 @@
         <tbody class="">
         <tr ng-repeat="m in ViewModel.MovieList">
             <td class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{ m.date_uploaded }}</td>
-            <td class="col-lg-4 col-md-4 col-sm-5 col-xs-12"><a ng-href="{{ m.url }}" ng-mouseover="Action.GetImageTooltip(m.medium_cover_image)" onmouseout="return nd();" target="_blank">{{ m.title }}</a></td>
+            <td class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                <a ng-href="{{ m.url }}" ng-mouseover="Action.GetImageTooltip(m.medium_cover_image)"
+                   onmouseout="return nd();" target="_blank">{{ m.title }}</a>
+            </td>
             <td class="col-lg-1 col-md-1 col-sm-1 hidden-xs">{{ m.year }}</td>
-            <td class="col-lg-1 col-md-1 col-sm-1 hidden-xs">{{ m.rating }}</td>
+            <td class="col-lg-1 col-md-1 col-sm-1 hidden-xs">{{ m.rating | number:1 }} / 10</td>
             <td class="col-lg-4 col-md-4 col-sm-5 hidden-xs">
-                <a href="http://www.imdb.com/title/{{ m.imdb_code }}" target="_blank" title="http://www.imdb.com/title/{{ m.imdb_code }}" class="IMDB_icon border-radius"></a>
+                <a href="http://www.imdb.com/title/{{ m.imdb_code }}" target="_blank"
+                   title="http://www.imdb.com/title/{{ m.imdb_code }}" class="IMDB_icon border-radius"></a>
                 &nbsp;&nbsp;
                 <span ng-repeat="t in m.torrents">
-                <a href="#" title="{{ 'BitTorrent File: ' + t.size }}" ng-click="Action.NavigateTo(t.url)"><i class="fa fa-file"></i>&nbsp;{{ t.quality }}</a>&nbsp;&nbsp;
-                <a href="#" title="{{ 'Magnet link: ' + t.size }}" ng-click="Action.OpenMagnetUri(t.hash, m.title)"><i class="fa fa-magnet"></i>&nbsp;{{ t.quality }}</a>&nbsp;&nbsp;
-            </span>
+                    <a href="#" title="{{ 'BitTorrent File: ' + t.size }}" ng-click="Action.NavigateTo(t.url)"
+                       onclick="return false;"><i class="fa fa-file"></i>&nbsp;{{ t.quality }}</a>
+                    &nbsp;&nbsp;
+                    <a href="#" title="{{ 'Magnet link: ' + t.size }}" ng-click="Action.OpenMagnetUri(t.hash, m.title)"
+                       onclick="return false;"><i class="fa fa-magnet"></i>&nbsp;{{ t.quality }}</a>
+                    &nbsp;&nbsp;
+                </span>
             </td>
         </tr>
         </tbody>

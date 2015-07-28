@@ -29,9 +29,10 @@
 
 .movieBlock {
     padding: 2px 2px 2px 2px;
-    width: 140px;
+    width: 10em;
 }
 
 .pageContent {
     min-height: 600px;
+    width: auto;
 }

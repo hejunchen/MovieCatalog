@@ -41,22 +41,23 @@
 
   </head>
 
-  <body ng-app="App" ng-cloak ng-controller="MovieController" ng-init="Initialization();Action.LoadMovieList(1);" style="vertical-align: middle">
-
+  <body ng-app="App" class="ng-cloak" style="vertical-align: middle"
+        ng-controller="MovieController" ng-init="Initialization();Action.LoadMovieList(1);" >
 
       <div class="container">
-
 
           <div id="divHeader" class="row">
             <ng-include src="'views/partials/PageHeader.html'"></ng-include>
           </div>
 
           <hr />
+
           <div id="divContent" class="row pageContent" ng-view>
               <!--this section will use the views to fill in content-->
           </div>
 
           <hr />
+
           <div id="divFooter" class="row">
             <ng-include src="'views/partials/PageFooter.html'"></ng-include>
           </div>
@@ -64,16 +65,13 @@
           <!--this is the loading animation panel, it should be visible most of time-->
           <div class="loading-animation-ajax" ng-if="ViewModel.IsLoading"></div>
 
-
       </div>
-
-
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/star-rating.min.js"></script>
     <script src="js/overlibmws.js"></script>
 
-
   </body>
+
 </html>
