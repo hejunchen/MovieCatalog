@@ -23,10 +23,10 @@
                    title="http://www.imdb.com/title/{{ m.imdb_code }}" class="IMDB_icon border-radius"></a>
                 &nbsp;&nbsp;
                 <span ng-repeat="t in m.torrents">
-                    <a href="#" title="{{ 'BitTorrent File: ' + t.size }}" ng-click="Action.NavigateTo(t.url)"
+                    <a href="" title="{{ 'BitTorrent File: ' + t.size }}" ng-click="Action.NavigateTo(t.url)"
                        onclick="return false;"><i class="fa fa-file"></i>&nbsp;{{ t.quality }}</a>
                     &nbsp;&nbsp;
-                    <a href="#" title="{{ 'Magnet link: ' + t.size }}" ng-click="Action.OpenMagnetUri(t.hash, m.title)"
+                    <a href="" title="{{ 'Magnet link: ' + t.size }}" ng-click="Action.OpenMagnetUri(t.hash, m.title)"
                        onclick="return false;"><i class="fa fa-magnet"></i>&nbsp;{{ t.quality }}</a>
                     &nbsp;&nbsp;
                 </span>
